@@ -1,1 +1,221 @@
-"Hello World"
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="intro">
+        <h1>CSCB07: Helpful Commands</h1>
+    </div>
+
+
+    <div class="svn">
+        <h2>SVN Commands</h2>
+
+        <p class="why">For this course, you will be required to use SVN to submit your labs. 
+            Knowing how to use version control is important in ensuring your work is submitted correctly
+            and allows for a cleaner and more pleasant experience when working on labs (and possibly other assessments).<br/>
+            <span class="note">Note: anything surrounded by square brackets/[] represents an optional argument.</span>
+        </p>
+
+        <ul>
+            <li><b>svn checkout [-r #] repo_site [destination_path]</b><br>
+                This command will create a local copy of the repository hosted at repo_site. If you want to checkout
+                a specific revision instead of the latest revision, you may add the additional -r # flag, where you replace
+                # with the revision number you want. This command will create the local repository in the current
+                path unless you input a specific destination_path (optional argument).
+            </li>
+
+            <li><b>svn update [-r #]</b><br>
+                This command will update your local repo to the latest version of the repository. If you want to update
+                to a specific revision instead of the latest revision, you may add the additional -r # flag, where you replace #
+                with tthe revision number you want.
+            </li>
+
+            <li><b>svn add file_path</b><br/>
+                This command will add a new file (located at the specified file_path in your local repo) to the repository. This
+                command is done before you commit (using svn commit) your changes.
+            </li>
+
+            <li><b>svn delete file_path</b><br/>
+                This command will delete a file (located at the specified file_path in your local repo) to the repository. This
+                command is done before you commit (using svn commit) your changes.
+            </li>
+
+            <li><b>svn commit -m "message"</b><br/>
+                This command is used to commit/push your local changes to the repository, creating a new revision. If you add the -m flag (for "message"),
+                you can add a comment summarizing your changes, which will be saved with your commit. It is very good practice to always commit with a message to
+                provide clarity regarding your changes, especially if others will be working with you.
+            </li>
+
+            <li><b>svn resolve [file_path]</b><br/>
+                As you may have realized, it is unfortunately inevitable that you will face a conflict when trying to commit/submit your labs. This 
+                command is used to resolve all the conflicts (or a conflict in a specified file given the file_path - optional argument). 
+                After entering "svn resolve", it will prompt you to choose between several options: For lab purposes, always select to merge (m).
+                It will then show you the previous revision's changes (which may be another student's changes) and yours: For lab purposes, always select to
+                take YOUR changes (2). Once this step is completed, you can then choose to resolve the issue (r) until it indicates that you have 0 conflicts.<br/>
+                If during this process, you get an out-of-date error, you will have to enter "svn update", still following the same steps as above.<br/><br/>
+
+                This is very important to do right, as incorrectly resolving a conflict may lead to unexpected changes to your file(s). Namely, you could accidentally
+                take the changes from the revision before you (representing another student's submission) which would be greatly unfortunate if those changes caused
+                you to have an incorrect solution!<br/><br/>
+                
+                After you have resolved your issues and committed, always make sure to check your submission<sup><b>*</b></sup> to make sure everything looks as you expected.
+            </li>
+
+            <li><b>svn log [-l #]</b><br/>
+                This command will list all the commit messages made to the repository (with the respective revision associated with eacch commit message). If you only want 
+                to view the latest # of commits, you may add the additional -l (for "latest") # flag, replacing # with the number of commit messages you want to see.
+            </li>
+
+            <li><b>svn --help [command]</b><br/>
+                This command will list out all the svn commands you can use. If you provide a command (optional argument),
+                it will provide you with detailed information regarding that command.<br/>
+                Very useful! :D
+            </li>
+        </ul>
+
+        <p class="why">
+            <sup><b>*</b></sup>In general, there are two ways you can check if you have submitted your lab: <br/>
+            <ol>
+                <li>
+                    At the time that you commit your changes, the latest version of the repo will be yours (which makes sense, since at that point 
+                    in time you are the latest person to update the repo). So, if you navigate to the repo site (https://helixteamhub.cloud/UTSC/projects/tutorialX/repositories/subversion/lab1repo, replacing X with your tutorial number), 
+                    you can look at the latest revision (aka your revision) and ensure that all the files there look as expected. If you are going to do this, make sure 
+                    to visit the site as soon as you commit, as if another student commits after you, the latest version of the repo 
+                    will be theirs and you will not be able to see the files you submitted (on top of that, the obvious issue of looking 
+                    at another students submission)
+                </li>
+
+                <li>
+                    If you just want to check that you committed, in the terminal go to the path where you stored your local repo and write "svn update", 
+                    and then "svn log". This will list all the commits made to the repo, so you just need to check for your commit message. Next to the commit message has the 
+                    revision number, so you can use the command "svn update -r [your revision number]" to look at your revision and also make sure everything looks as expected.
+
+                </li>
+            </ol>
+            
+        </p>
+    </div>
+
+
+    <div class="bash">
+        <h2>Bash Commands</h2>
+        <p class="why">The terminal is a computer scientist's best friend. If you know ho<br/>
+            <span class="note">Note: This is a small [but useful] subset of commands, and a very general summary for each of them.
+                If you would like to learn more, I encourage you to search the interwebs and do your own research (also take CSCB09).
+            </span>
+        </p>
+        <ul>
+            <li><b>pwd</b><br/>
+                <u>Functionality</u>: Prints the current working directory.<br/>
+
+                <u>Command syntax</u>: pwd
+            </li>
+
+            <li><b>cd</b><br/>
+                <u>Functionality</u>: Changes the current working directory to the destination directory (as an absolute or relative path). Instead of inputting a
+                destination directory, the following options are also available:<br/>
+                /&nbsp;&nbsp;&nbsp;&nbsp;change current directory to root directory<br>
+                ~&nbsp;&nbsp;&nbsp;&nbsp;change current directory to home directory<br>
+                ..&nbsp;&nbsp;&nbsp;&nbsp;change current directory to current directory's parent directory<br/>
+                .&nbsp;&nbsp;&nbsp;&nbsp;current directory remains unchanged<br/>
+                
+                <u>Command syntax</u>: cd directory_path (or one of the options listed above, e.g cd .., cd ~)
+            </li>
+
+            <li><b>mkdir</b><br/>
+                <u>Functionality</u>: Creates a new directory if it does not already exist
+                in the designated directory path (can be an absolute or relative path).<br/>
+                
+                <u>Command syntax</u>: mkdir directory_name
+            </li>
+
+            <li><b>ls</b><br/>
+                <u>Functionality</u>: Lists the contents of the current working directory if
+                no parameters are given. Instead of printing the current directory's
+                contents, the following options are also available:<br/>
+                directory_path&nbsp;&nbsp;&nbsp;&nbsp;Lists the contents of the directory path<br/>
+                file_path&nbsp;&nbsp;&nbsp;&nbsp;Prints the file path<br/>
+                Note: either of the two paths may be absolute or relative. However,
+                if the user passes an invalid directory/file path as one of the parameters,
+                ls will print an error message.<br/>
+                
+                <u>Command syntax</u>: ls [path1 ...]
+            </li>
+
+            <li><b>nano</b><br/>
+                <u>Functionality</u>: A command line text editor that creates/edits a file. If the file provided
+                does not exist, nano will create the file first then allow you to edit it.<br/>
+
+                To exit nano (and save your work), enter CtrlX, then yes/no depending on if you want to save your changes.<br/>
+                <u>Command syntax</u>: nano file_name
+            </li>
+
+            <li><b>rm</b><br/>
+                <u>Functionality</u>:  Removes files/directories (formatted as a relative
+                or absolute path). If the user wishes to delete a directory, they must add the flag -rf.<br/>
+
+                <b>*Warning*</b>: When deleting files/directories in the terminal, you must be very careful as there is no way
+                to undo the action - if you accidentally delete your root directory, that would be quite unfortunate....<br/>
+                
+                Command syntax: rm file_path OR rm -rf directory_path
+            </li>
+
+            <li><b>cat</b><br/>
+                <u>Functionality</u>:  Reads and/or conCATenates data from one or more files
+                (formatted as a relative or absolute path) and prints their contents
+                to standard output (separated by three lines).<br/>
+                
+                Command syntax: cat file1_path [file2_path ...]
+            </li>
+
+            <li><b>echo</b><br/>
+                <u>Functionality</u>: Writes string arguments (MUST be encased in quotation marks)
+                to standard output if no destination file is provided. If a '>', followed by
+                a destination file path is included in the arguments, writes string arguments to
+                destination file (overwrites previous contents of destination file). If a '>>',
+                followed by a destination file path is included in the arguments, appends string
+                arguments to destination file.<br/>
+                
+                Note: If the destination file path does not exist, echo will create it first.<br/>
+                
+                <u>Command syntax</u>: echo string_args [> OR >> destination_file_path]
+            </li>
+
+            <li><b>mv</b><br/>
+                <u>Functionality:</u> Transports files and directories from one directory to another
+                (formatted as a relative or absolute path). If the destination
+                directory does not exist, mv will rename the source file/directory to the name of
+                the destination directory. If the destination directory path is the same as the
+                source file/directory's current directory, mv will print an error message.<br/>
+
+                <u>Command syntax</u>: mv source_path destination_path
+            </li>
+
+            <li><b>cp</b><br/>
+                <u>Functionality</u>: Copies a specified directory/file path to the new specified
+                directory/file path (can be relative or absolute). If the user passes an
+                invalid path (either as the source or destination), or if the destination
+                directory path already contains the a directory/file with the same name as the
+                source directory/file path, cp will print an error message. If both the source and
+                destination paths specify a file, cp will overwrite the destination file to contain
+                the source file's contents.<br/>
+                Note: If the destination file does not exist, cp will first create the destination file
+                and write the source file's contents to it.<br/>
+                
+                <u>Command syntax</u>: cp source_path destination_path
+            </li>
+
+            <li><b>man</b><br/>
+                <u>Functionality</u>: Prints the functionality of a command.<br/>
+                Note: If you wish to exit a command's man page after reading it, just enter 'q' (for "quit")<br/>
+
+                <u>Command syntax</u>: man command_name
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

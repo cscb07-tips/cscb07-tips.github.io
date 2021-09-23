@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&display=swap');
+
+body {
+    background-color: #FFEBC9;
+    color: #753422;
+    font-family: 'Chivo', sans-serif;
+    margin-left: 1.5em;
+    width: 75%;
+    line-height: 1.4em;
+    font-size: 1.05em;
+}
+
+.intro {
+    font-weight: bolder;
+    background-color: #d7967191;
+    padding-top: 0.5em;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    border-radius: 0.3em;
+}
+
+.why {
+}
+
+h2 {
+    color: #9e4626;
+}
+
+li {
+    padding-bottom: 0.8em;
+}
+
+.note {
+    font-weight: bold;
+    font-size: 0.9em;
+}
